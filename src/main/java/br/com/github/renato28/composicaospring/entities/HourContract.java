@@ -16,6 +16,10 @@ public class HourContract {
     private Double valuePerHour;
     private Integer hours;
 
+    @ManyToOne
+    @JoinColumn(name = "worker_id")
+    private Worker worker;
+
     public HourContract() {
 
     }
@@ -56,6 +60,18 @@ public class HourContract {
 
     public void setHours(Integer hours) {
         this.hours = hours;
+    }
+
+    public Worker getWorker() {
+        return worker;
+    }
+
+    public void setWorker(Worker worker) {
+        this.worker = worker;
+    }
+
+    public double totalValue(){
+        return valuePerHour * hours;
     }
 
     @Override
